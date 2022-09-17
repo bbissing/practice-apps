@@ -11,8 +11,6 @@ class Definition extends React.Component{
       currentWord: this.props.word.word,
       currentDefinition: this.props.word.definition
     };
-
-    //this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -36,7 +34,6 @@ class Definition extends React.Component{
       word: this.state.wordValue,
       definition: this.state.definitionValue
     };
-    console.log('DefinitionClass.jsx - handleSubmit() - filter/update', filter, update);
     if (update.word === '' || update.definition === '') {
       this.setState({isTrue: false});
     } else {
@@ -47,7 +44,6 @@ class Definition extends React.Component{
 
   handleClick(event) {
     event.preventDefault();
-    console.log(event.target.attributes.value.nodeValue);
     if(event.target.attributes.value.nodeValue === "Edit") {
       this.setState({isTrue: true});
     } else {
@@ -55,7 +51,6 @@ class Definition extends React.Component{
         word: this.state.currentWord,
         definition: this.state.currentDefinition
       };
-      console.log('DefinitionClass.jsx - handleClick() - delete - object', object);
       this.props.delete(object);
       this.setState({removed: true});
     }
@@ -93,27 +88,3 @@ class Definition extends React.Component{
 }
 
 export default Definition
-
-
-// return (
-//   <form onSubmit={this.handleSubmit}>
-//     <label>
-//       Word:
-//       <input type="text" className="word" value={this.state.wordValue} onChange={this.handleChange}/>
-//     </label>
-//     <label>
-//       Definition:
-//       <input type="text" className="definition" value={this.state.definitionValue} onChange={this.handleChange}/>
-//     </label>
-//     <input type="submit" value="Submit"/>
-//   </form>
-// )
-
-// return (
-//   <div>
-//     <div>{this.props.word.word}: {this.props.word.definition} </div>
-//     <input type="submit" value="Done" onClick={this.handleClick}/>
-//     <input type="submit" value="Delete" onClick={this.handleClick}/>
-//  </div>
-// )
-

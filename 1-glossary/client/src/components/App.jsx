@@ -20,32 +20,26 @@ class App extends React.Component {
   }
 
   search(word) {
-   console.log('App.jsx - search()');
-   console.log('word', word);
    this.setState({searchedTerm: word});
   }
 
   submit(object) {
       axios.post('/glossary', {object})
       .then((response) => {
-        console.log('App.jsx - submit() - axios.post()', response);
         this.seed();
       })
       .catch((error) => { console.error(error); });
   }
 
   seed() {
-    console.log('App.jsx - seed()');
     axios.get('/glossary')
       .then((response) => {
-        console.log('App.jsx - seed() - axios.get()', response);
         this.setState({ data: response });
       })
       .catch((error) => { console.error(error); });
   }
 
   update(filter, update){
-    console.log('App.jsx - update()');
     axios.post('/update', {filter, update})
       .then((response) => {
         console.log('App.jsx - update() - axios.post()', response);
@@ -54,7 +48,6 @@ class App extends React.Component {
   }
 
   delete(object){
-    console.log('App.jsx - delete()');
     axios.post('/delete', {object})
       .then((response) => {
         console.log('App.jsx - delete() - axios.post()', response);
@@ -71,7 +64,6 @@ class App extends React.Component {
         </div>
       )
     } else {
-      console.log(this.state.data);
       return(
         <div>
           <div><SearchBar search={this.search}/></div>

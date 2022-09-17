@@ -6,7 +6,6 @@ class SearchBar extends React.Component{
     this.state = {
       value: '',
     };
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -18,7 +17,6 @@ class SearchBar extends React.Component{
   handleSubmit(event) {
     event.preventDefault();
     var word = this.state.value;
-    console.log('Search.jsx - handleSubmit() - word', word);
     this.props.search(word);
   }
 

@@ -7,7 +7,6 @@ class Submit extends React.Component{
       wordValue: '',
       definitionValue: ''
     };
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -26,7 +25,6 @@ class Submit extends React.Component{
       word: this.state.wordValue,
       definition: this.state.definitionValue
     };
-    console.log('Submit.jsx - handleSubmit() - object', object);
     this.props.submit(object);
     this.setState({wordValue: '', definitionValue: ''});
   }
