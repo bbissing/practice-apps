@@ -9,7 +9,7 @@ const wordSchema = new mongoose.Schema({
 
 const Word = mongoose.model('Word', wordSchema);
 
-module.exports.Word;
+module.exports.Word = Word;
 
 // 1. Use mongoose to establish a connection to MongoDB
 // 2. Set up any schema and models needed by the app

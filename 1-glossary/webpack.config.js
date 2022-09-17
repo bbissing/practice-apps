@@ -25,9 +25,6 @@ module.exports = {
       {
         test: /\.jsx$/,
         exclude: /(node_modules|bower_components)/,
-        resolve: {
-          extensions: ['', '.js', '.jsx']
-        },
         use: {
           loader: 'babel-loader',
           options: {
@@ -36,23 +33,15 @@ module.exports = {
         }
       },
       {
-        test: /\.html$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'html-loader'
-        }
-      },
-      {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
       },
     ]
  },
- plugins: [
-  new HtmlWebpackPlugin({
-    template: './client/src/index.html',
-    filename: "./index.html",
-    publicPath: '/'
-  }),
- ]
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+    fallback: {
+      path: require.resolve('path-browserify')
+    }
+  },
 };
