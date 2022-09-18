@@ -1,6 +1,5 @@
 import React from 'react';
 import UserForm from './UserForm.jsx';
-const axios = require('axios');
 
 class App extends React.Component {
   constructor(props) {
@@ -10,16 +9,6 @@ class App extends React.Component {
     }
 
     this.handleClick = this.handleClick.bind(this);
-    this.submit = this.submit.bind(this);
-  }
-
-  submit(object) {
-    console.log('App.jsx - submit()');
-    axios.post('/user', {object})
-    .then((response) => {
-      console.log('data sucessfully added', response);
-    })
-    .catch((error) => { console.error(error); });
   }
 
   handleClick(e) {
@@ -30,7 +19,7 @@ class App extends React.Component {
   render() {
     if (this.state.userClicked) {
       return (
-        <UserForm submit={this.submit}/>
+        <UserForm />
       )
     }
 

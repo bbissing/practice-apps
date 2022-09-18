@@ -1,4 +1,6 @@
 import React from 'react';
+import LocationForm from './LocationForm.jsx';
+const axios = require('axios');
 
 class UserForm extends React.Component {
   constructor(props) {
@@ -7,6 +9,8 @@ class UserForm extends React.Component {
       name: '',
       email: '',
       password: '',
+      userClicked: false,
+      userId: null
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,10 +36,23 @@ class UserForm extends React.Component {
       password: this.state.password
     };
 
-    this.props.submit(object);
+    axios.post('/user', {object})
+    .then((response) => {
+      console.log('data sucessfully added', response.data[0].insertId);
+      var userId = response.data[0].insertId;
+      this.setState({ userClicked: true, userId: userId }, () => { console.log(this.state.userId); });
+    })
+    .catch((error) => { console.error(error); });
+
   }
 
   render() {
+    if (this.state.userClicked) {
+      return (
+        <LocationForm submit={this.props.submit} userId={this.state.userId}/>
+      )
+    }
+
     return(
       <form onSubmit={this.handleSubmit}>
         <label>
